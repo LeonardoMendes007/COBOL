@@ -145,7 +145,7 @@
               IF ST-ERRO = "10"
                  MOVE "*** FIM DO ARQUIVO  ***" TO MENS
                  PERFORM ROT-MENS THRU ROT-MENS-FIM
-                 GO TO NOV-SOL
+                 GO TO INC-001
               ELSE
                  MOVE "ERRO NA LEITURA DO ARQUIVO CADCEP"  TO MENS
                  PERFORM ROT-MENS THRU ROT-MENS-FIM
@@ -163,25 +163,18 @@
              IF W-OPCAO = "P"
                    GO TO INC-RD2
              ELSE
-                 IF W-OPCAO NOT = "A"
+                
                      MOVE "*** OPCAO NAO DISPONIVEL ***" TO MENS
                      PERFORM ROT-MENS THRU ROT-MENS-FIM
-                     GO TO ROT-SOL
-                 ELSE
-                     START CADCEP KEY IS NOT GREATER OR EQUAL
-                                            CEP-NUMCEP INVALID KEY
-                        MOVE "*** CHAVE NAO ENCONTRADA ***"  TO MENS
-                        PERFORM ROT-MENS THRU ROT-MENS-FIM  
-                        GO TO ROT-FIM.  
-           GO TO INC-RD2.
-      *
+                     GO TO ROT-SOL.
+
       *
       **********************
       * ROTINA DE FIM      *
       **********************
       *
        ROT-FIM.
-           DISPLAY (01 01) ERASE.
+
            CLOSE CADCEP.
        ROT-FIM2.
            EXIT PROGRAM.
